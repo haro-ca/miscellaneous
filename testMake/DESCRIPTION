@@ -1,0 +1,15 @@
+Package: testMake
+Title: Prueba del Makefile
+Version: 1.0.0
+Authors@R: 
+    person(given = "Carlos",
+           family = "Haro",
+           role = c("aut", "cre"))
+Description: Es una prueba de los comandos de un Makefile
+License: Interna. Uso exclusivo del SAT.
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

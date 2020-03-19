@@ -1,0 +1,41 @@
+---
+title: "Gráficas de flights"
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{Gráficas de flights}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  message = FALSE, 
+  warning = FALSE
+)
+```
+
+```{r, fig.width=20, fig.height=11}
+# 
+library(tidyverse)
+library(extrafont)
+library(here)
+
+# 
+flights = fst::read_fst(here('data', 'flights_clean.fst'))
+
+
+theme_set(theme_bw() + theme(text = element_text(family = 'Montserrat', size = 25)))
+
+# 
+flights %>% 
+  gather() %>% 
+  ggplot() +
+  facet_grid(key~., switch = 'both') +
+  geom_violin(aes(y = value, x = 1,  fill = key), alpha = 0.5) +
+  scale_fill_manual(values = c('red', 'blue')) +
+  coord_flip() 
+
+```
+
